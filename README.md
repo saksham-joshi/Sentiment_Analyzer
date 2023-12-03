@@ -12,6 +12,7 @@ This Model is developed using Python3 programming language without using nltk pa
  - Download this repository from [here](https://github.com/saksham-joshi/Sentiment_Analyzer/archive/refs/heads/main.zip).
  - After downloading, extract the zip file and open the extracted folder.
 ## Files & Folders:
+1. "support_files": this folder is used by "Corrector_generator.ipynb" to generate "Corrector.json". 
 1. "Corrector.json": this file contains all the words required to clean your given text which eventually increases accuracy and quality of output.
 2. "Corrector_generator.ipynb": this is a jupyter notebook file of a python script which helps you to generate and update "Corrector.json".
 3. "AnalystUtility.py": this file contains the implementation of neccesary formula required to create outputs.
