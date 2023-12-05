@@ -1,6 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from Model.Analyzer import *
+
 app = Flask(__name__)
+
+CORS(app)
 
 @app.route("/")
 def load_mainpage():
@@ -8,5 +12,5 @@ def load_mainpage():
 
 @app.route("/analyze")
 def analyze() :
-    return Analyze_String(request.args.get('text'))
+    return jsonify(Analyze_String(request.args.get('text')))
     
