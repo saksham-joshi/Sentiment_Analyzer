@@ -11,11 +11,6 @@ This Model is developed using Python3 programming language without using nltk pa
  - Install Python3 on your system from [here](https://www.python.org/downloads/).
  - Download this repository from [here](https://github.com/saksham-joshi/Sentiment_Analyzer/archive/refs/heads/main.zip).
  - After downloading, extract the zip file and open the extracted folder.
- - Copy-paste the folder to your project.
- - import the Analyzer.py to your python file.
- - If you want to perform analysis on string, then pass your string to Analyze_String function.
- - If you want to perform analysis on file, then pass address of your file to Analyze_File function.
-   
 ## Files & Folders:
 1. "support_files": this folder is used by "Corrector_generator.ipynb" to generate "Corrector.json". 
 1. "Corrector.json": this file contains all the words required to clean your given text which eventually increases accuracy and quality of output.
