@@ -7,7 +7,8 @@ This Model is developed using Python3 programming language without using nltk pa
 
 
 ## How to use it ?
-
+ - If you want to use it from online api, then visit "https://sentimentanalyzer.vercel.app/analyze?text=your+text+here" and it will return you a json object which contains output.
+ - or you can download the source code of this model on your system and use it as you want.
  - Install Python3 on your system from [here](https://www.python.org/downloads/).
  - Download this repository from [here](https://github.com/saksham-joshi/Sentiment_Analyzer/archive/refs/heads/main.zip).
  - After downloading, extract the zip file and open the extracted folder.
