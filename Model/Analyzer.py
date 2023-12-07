@@ -1,5 +1,6 @@
 from json import load
 from Model.AnalystUtility import *
+import threading
 
 json_obj = load(open("./Model/Corrector.json"))
 
@@ -62,6 +63,8 @@ def Analyze_String(val: str):
     unidentified_words = 0
     avg_sentence_length = 0
     percent_of_complex_words = 0
+
+    list_unidentified_words = []
     try :
 
         i = 0
@@ -69,14 +72,18 @@ def Analyze_String(val: str):
         while i < val.__len__():
 
             word = ""
+
             
             if i < val.__len__() and (val[i] == "." or val[i] == '?' or val[i] == '!') : no_of_sentence+=1
             if not val[i].isalpha() : i+=1
 
             # extracting the word
-            while (i < val.__len__() and val[i].isalpha()):
-                word += val[i].upper()
-                i+=1
+            try :
+                while (i < val.__len__() and val[i].isalpha()):
+                    word += val[i].upper()
+                    i+=1
+            except UnicodeError :
+                pass
             if word.__len__() != 0 : total_no_of_words+=1
             
             # check if the word's length is zero or it is included in stopwords.
@@ -88,7 +95,7 @@ def Analyze_String(val: str):
             # Now calculating the output ....
             if is_positive_word(word) : positive_score+=1
             elif is_negative_word(word) : negative_score+=1
-            else : unidentified_words+=1
+            else : list_unidentified_words.append(word) ;unidentified_words+=1
 
             if AnalystUtility.is_complex_word(word) : no_of_complex_word+=1
 
@@ -98,6 +105,7 @@ def Analyze_String(val: str):
         percent_of_complex_words = AnalystUtility.calculate_percent_of_complex_words(no_of_complex_word, total_no_of_words)
     except :
         pass
+    threading.Thread(target= AnalystUtility.add_unidentified_words,args=(list_unidentified_words,)).start()
 
     return {"Positive Score": positive_score,
             "Negative Score": negative_score,
@@ -117,4 +125,4 @@ def Analyze_File(file_url: str) -> dict:
     try:
         return Analyze_String(open(file_url).read())
     except Exception as e:
-        print("Exception Caught: "+e)
+        pass

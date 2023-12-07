@@ -50,3 +50,13 @@ class AnalystUtility :
     @staticmethod
     def calculate_average_word_length(total_no_of_character : int, no_of_word : int) -> float :
         return round((total_no_of_character/(no_of_word+0.00001)), 3)
+    
+    @staticmethod
+    def add_unidentified_words(lst : list) :
+        try :
+            with open("./Model/support_file/unidentified_words.txt", 'a') as file:
+                try :
+                    for i in lst :
+                        file.write(i+'\n')
+                except : pass
+        except : pass
